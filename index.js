@@ -400,7 +400,13 @@ io.on('connection', function(socket) {
 
                             if (arr_sq[player[id].x + "_" + player[id].y].food == true) {
                                 player[id].sq_size++;
+                                io.emit("laeder", {
+                                    id: player[id].id,
+                                    name: player[id].name,
+                                    sq_size: player[id].sq_size,
+                                });
                                 let new_Food = food_add();
+
                                 io.emit('draw', { fillStyle: '#00FF00', x: arr_sq[new_Food].x, y: arr_sq[new_Food].y });
                             }
                             player[id].lastX[player[id].sq_size] = player[id].x;

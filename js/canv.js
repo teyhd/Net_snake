@@ -13,14 +13,12 @@ inputs.offset({
 });
 
 
-leaderboard.html("<p>Первый тест</p>");
-leaderboard.append("<p>Второй тест</p>");
+leaderboard.html("<p>Таблица лидеров</p>");
+//leaderboard.append("<p>Второй тест</p>");
 leaderboard.append('<p id="me">Третий тест</p>');
 var me_laeder = $("#me");
-
-me_laeder.html('<p id="me">я тест</p>')
-me_laeder.before("<p>Четвертый тест</p>");
-
+var leaders = [];
+var leader_num = 0;
 
 function isInteger(num) {
     return (num ^ 0) === num;
@@ -70,6 +68,7 @@ var last = {
 window.addEventListener("message", function listener(event) {
     let game_start = event.data;
     player_set.name = game_start.login;
+    me_laeder.html('<p id="me"> [' + player_set.sq_size + '] ' + game_start.login + '</p>');
     player_set.color_body = game_start.body;
     player_set.color_head = game_start.head;
     if (game_start.admin == 1)
@@ -97,12 +96,28 @@ socket.on('draw', function(ans) {
     ctx.lineWidth = 1;
     ctx.strokeRect(ans.x, ans.y, 20, 20);
     if (ans.head == true) {
-        window.scrollTo(ans.x - Math.floor(window.innerWidth / 2), ans.y - Math.floor(window.innerHeight / 2));
-        leaderboard.offset({
-            top: 50 + window.pageYOffset,
-            left: window.innerWidth - leaderboard.width() - 50 + window.pageXOffset,
-        })
+        if (player_set.id == ans.id) {
+            window.scrollTo(ans.x - Math.floor(window.innerWidth / 2), ans.y - Math.floor(window.innerHeight / 2));
+            leaderboard.offset({
+                top: 50 + window.pageYOffset,
+                left: window.innerWidth - leaderboard.width() - 50 + window.pageXOffset,
+            })
+        }
     }
+});
+
+socket.on("laeder", function(ans) {
+    if (ans.id == player_set.id)
+        me_laeder.html('<p id="me"> [' + ans.sq_size + '] ' + ans.name + '</p>');
+    else
+    if (leaders[ans.id] == null) {
+        leaders[ans.id] = {
+            id: ans.id,
+            name: ans.name,
+        };
+        me_laeder.before('<p id="' + ans.name + '"> [' + ans.sq_size + '] ' + ans.name + '</p>');
+    } else
+        $("#" + ans.name).html('<p id="' + ans.name + '"> [' + ans.sq_size + '] ' + ans.name + '</p>');
 
 });
 
