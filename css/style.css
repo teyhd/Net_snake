@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 13px Helvetica, Arial;
+    overflow: hidden;
+}
+
+.leader_board {
+    position: absolute;
+    width: 250px;
+    height: auto;
+    /* Размеры */
+    background: #6c8790de;
+    /* Цвет фона */
+    border: 3px solid rgb(228, 228, 228);
+    /* Белая рамка */
+    border-radius: 10px;
+    /* Радиус скругления */
+    font-family: Georgia;
+    font-display: Georgia;
+    font-style: Georgia;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3px;
+    color: #d2c973;
+    box-shadow: 5px 5px rgb(54, 54, 54);
+    text-shadow: 3px 3px rgb(98, 93, 45);
+}
+
+.inputs {
+    width: 300px;
+    height: auto;
+    /* Размеры */
+    background: #6c8790de;
+    /* Цвет фона */
+    border: 3px solid rgb(228, 228, 228);
+    /* Белая рамка */
+    border-radius: 10px;
+    /* Радиус скругления */
+    font-family: Georgia;
+    font-display: Georgia;
+    font-style: Georgia;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3px;
+    color: #b5ce49;
+    box-shadow: 5px 5px rgb(54, 54, 54);
+    text-shadow: 3px 3px rgb(98, 93, 45);
+}
+
+#me {
+    font-family: Georgia;
+    font-style: Georgia;
+    font-display: Georgia;
+    text-align: center;
+    color: #e23d0b;
+}
+
+#canvas {
+    display: block;
+    overflow: hidden;
+}
+
+form {
+    background: #000;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+form input {
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+}
+
+form button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
